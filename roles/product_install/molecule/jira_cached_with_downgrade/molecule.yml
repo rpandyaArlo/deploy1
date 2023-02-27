@@ -1,0 +1,26 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: amazon_linux2
+    image: amazonlinux:2
+    groups:
+      - aws_node_local
+  - name: ubuntu_lts
+    image: ubuntu:bionic
+    groups:
+      - aws_node_local
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_COLLECTIONS_PATH: "../../"
+  options:
+    vvv: true
+    skip-tags: runtime_pkg
+  inventory:
+    links:
+      group_vars: ../../../../group_vars/
+verifier:
+  name: testinfra
+  additional_files_or_dirs:
+    - ../../resources/tests/test_*.py

@@ -1,0 +1,7 @@
+---
+
+- name: Install Ubuntu-specific NFS packages
+  ansible.builtin.apt:
+    name:
+      - nfs-kernel-server
+      - libnfs-utils

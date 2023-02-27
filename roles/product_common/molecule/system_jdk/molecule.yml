@@ -1,0 +1,14 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: amazon_linux2
+    image: amazonlinux:2
+  - name: ubuntu_lts
+    image: ubuntu:bionic
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_COLLECTIONS_PATH: "../../"
+verifier:
+  name: testinfra
